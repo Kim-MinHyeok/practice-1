@@ -28,7 +28,7 @@ app.post('/register', (req, res) => {
     if(err) return res.json({ success: false, err})
     return res.status(200).json({ success: true })
   })
-})
+}) 
 
 app.post('/login', (req,res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -45,7 +45,7 @@ app.post('/login', (req,res) => {
 
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-        
+
         res.cookie("x_auth", user.token)
         .status(200)
         .json({ loginSuccess: true, userId: user._id })

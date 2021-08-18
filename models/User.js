@@ -58,7 +58,7 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
     if(err) return cb(err)
     cb(null, isMatch)
   })
-}
+} 
 
 userSchema.methods.generateToken = function(cb) {
   var user = this;

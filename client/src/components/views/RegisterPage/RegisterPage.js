@@ -50,7 +50,7 @@ function RegisterPage(props) {
           props.history.push("/login")
         } else {
           alert("Failed to sign up")
-        }
+        } 
       })
   }
 

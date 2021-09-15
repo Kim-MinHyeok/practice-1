@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
-import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -46,11 +46,11 @@ function RegisterPage(props) {
 
     dispatch(registerUser(body))
       .then(response => {
-        if(reponse.payload.success) {
+        if(response.payload.success) {
           props.history.push("/login")
         } else {
           alert("Failed to sign up")
-        } 
+        }
       })
   }
 
@@ -66,7 +66,7 @@ function RegisterPage(props) {
         <input type="email" value={Email} onChange={onEmailHandler} />
 
         <label>Name</label>
-        <input type="text" value={ConfirmPassword} onChange={onNameHandler} />
+        <input type="text" value={Name} onChange={onNameHandler} />
 
         <label>Password</label>
         <input type="password" value={Password} onChange={onPasswordHandler} />
@@ -84,4 +84,4 @@ function RegisterPage(props) {
   )
 }
 
-export default RegisterPage
+export default withRouter(RegisterPage)
